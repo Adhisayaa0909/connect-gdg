@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import EventDetails from "./pages/EventDetails";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
-import Gallery from "./pages/Gallery";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ const App = () => (
               <Route path="/event/:id" element={<EventDetails />} />
               <Route path="/register/:eventId" element={<Register />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/gallery" element={<Gallery />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
