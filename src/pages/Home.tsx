@@ -88,7 +88,7 @@ const Home = () => {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((event, i) => (
-            <EventCard key={event.id} event={event} index={i} />
+            <EventCard key={event.id} event={event} index={i} onImageUpdate={() => setEvents(getEvents())} />
           ))}
         </div>
       )}
