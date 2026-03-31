@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const links = [
     { to: "/", label: "Events" },
-    { to: "/gallery", label: "Gallery" },
+    
     { to: "/admin", label: "Admin" },
   ];
 
