@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
@@ -8,6 +9,19 @@ const eventRoutes = require("./routes/eventRoutes");
 const registrationRoutes = require("./routes/registrationRoutes");
 
 dotenv.config();
+
+// Ensure uploads directory exists for multer local storage.
+const UPLOADS_DIR = process.env.UPLOADS_PATH
+  ? path.resolve(process.env.UPLOADS_PATH)
+  : path.join(__dirname, "uploads");
+
+try {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  console.log(`Uploads directory ready at: ${UPLOADS_DIR}`);
+} catch (error) {
+  console.error("Failed to create uploads folder", error);
+  process.exit(1);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,7 +45,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(UPLOADS_DIR));
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Backend is running" });
