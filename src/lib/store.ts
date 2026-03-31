@@ -19,6 +19,10 @@ export const createEvent = (event: Omit<GDGEvent, "id" | "createdAt">) => {
   return newEvent;
 };
 
+export const updateEventImage = (id: string, image: string) => {
+  events = events.map((e) => (e.id === id ? { ...e, image } : e));
+};
+
 export const deleteEvent = (id: string) => {
   events = events.filter((e) => e.id !== id);
   registrations = registrations.filter((r) => r.eventId !== id);
