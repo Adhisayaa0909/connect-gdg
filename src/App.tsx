@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import EventDetails from "./pages/EventDetails";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
-import Gallery from "./pages/Gallery";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
